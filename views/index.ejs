@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>To do list</title>
+        <link rel="stylesheet" href="CSS/todolist.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://use.fontawesome.com/270b88514b.js"></script>
+    </head>
+
+    <body style="background-color:#374045;">
+        <div class="main">
+
+            <div class="heading_main">
+                <h1 class="heading"><%=currentDay%></h1>
+            </div>
+
+
+           <form action='/delete'method="post"> 
+                <ul class="list-group">
+                
+                    <%for(var i=0;i<itemAdd.length;i++){%>
+                    
+                    <li class="list-group-item item-size">
+                        <input id="myBtn" class="form-check-input me-1 checkbox-size" type="checkbox" aria-label="..." name="checkbox" value=<%=itemAdd[i]._id%> onChange="this.form.submit()">
+                        <p class="strikethrough" style="display: inline;"><%=itemAdd[i].name %></p>
+                        <button class="btn" name="checkbox" value=<%=itemAdd[i]._id%> > <i class="fa fa-trash fa-2x" aria-hidden="true" > </i></button>
+                 
+                    </li>
+                    <%}%>
+                </ul>
+            </form>
+
+            <form method="post">
+                     
+                <input class="form-control form-control-lg" type="text" placeholder="New Item"name="newItem" style="font-size: large;padding: 25px 10px 25px 15px;">
+                <br>
+                <button type="submit" class="btn btn-primary mb-2" style="font-size: large;width: 20%;font-weight: bold;">+</button>
+            </form>     
+        </div>
+    </body>
+</html>
